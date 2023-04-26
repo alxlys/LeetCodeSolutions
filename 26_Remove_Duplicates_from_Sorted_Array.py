@@ -22,9 +22,11 @@ if __name__ == '__main__':
     nums = [1, 1, 2]
     print(nums)
     print(solution.removeDuplicates(nums))
+    # Output: 2, nums = [1, 2, _]
     print(nums)
 
     nums = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]
     print(nums)
     print(solution.removeDuplicates(nums))
+    # Output: 5, nums = [0,1,2,3,4,_,_,_,_,_]
     print(nums)
