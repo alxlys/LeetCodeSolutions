@@ -1,8 +1,5 @@
 # https://leetcode.com/problems/merge-k-sorted-lists/
 from typing import List, Optional
-import sys
-
-max_int = sys.maxsize
 
 
 class ListNode:
@@ -21,20 +18,38 @@ class ListNode:
 
 class Solution:
     def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
-        dummy_node = ListNode()
-        current = dummy_node
-        while True:
-            min_list_int = max_int
-            min_list = None
-            for l in lists:
-                if l and l.val < min_list_int:
-                    min_list_int = l.val
-                    min_list = l
-            if not min_list:
-                break
+        if not lists:
+            return None
+        elif len(lists) < 2:
+            return lists.pop()
 
+        list_0 = lists.pop()
+        while lists:
+            list_1 = lists.pop()
+            list_0 = self.__merge_two_lists__(list_0, list_1)
 
+        return list_0
 
+    def __merge_two_lists__(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+        curr = ListNode()
+        head = curr
+
+        while list1 or list2:
+            if list1 and list2 and list1.val < list2.val:
+                curr.next = list1
+                list1 = list1.next
+            elif list1 and list2:
+                curr.next = list2
+                list2 = list2.next
+            elif list1:
+                curr.next = list1
+                list1 = list1.next
+            else:
+                curr.next = list2
+                list2 = list2.next
+            curr = curr.next
+
+        return head.next
 
 
 if __name__ == '__main__':
