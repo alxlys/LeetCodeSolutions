@@ -2,6 +2,7 @@
 from typing import List
 
 
+# TODO not solved
 class Solution:
     def totalFruit(self, fruits: List[int]) -> int:
         res = 1

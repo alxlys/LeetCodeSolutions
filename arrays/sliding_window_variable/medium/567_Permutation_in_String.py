@@ -12,7 +12,7 @@ class Solution:
         s2_curr_len = 0
         s2_len = len(s2)
         while l <= r < s2_len:
-            if s1_len == s2_curr_len or s1_len < s2_curr_len:
+            if s1_len <= s2_curr_len:
                 s2_char_map[s2[l]] = s2_char_map.get(s2[l], 1) - 1
                 if not s2_char_map[s2[l]]:
                     del s2_char_map[s2[l]]

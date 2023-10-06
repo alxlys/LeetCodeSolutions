@@ -4,13 +4,11 @@ class Solution:
         _l, _r = 0, len(s) - 1
 
         while _l < _r:
-            if not s[_l].isalpha() and not s[_l].isalnum():
+            while not s[_l].isalnum() and _l < _r:
                 _l += 1
-                continue
-            if not s[_r].isalpha() and not s[_r].isalnum():
+            while not s[_r].isalnum() and _l < _r:
                 _r -= 1
-                continue
-            if s[_l].casefold() != s[_r].casefold():
+            if s[_l].lower() != s[_r].lower():
                 return False
             _l += 1
             _r -= 1
@@ -23,14 +21,14 @@ if __name__ == '__main__':
 
     # Input: s = "A man, a plan, a canal: Panama"
     # Output: true
-    # print(solution.isPalindrome('A man, a plan, a canal: Panama'))
+    print(solution.isPalindrome('A man, a plan, a canal: Panama'))
 
     # Input: s = "race a car"
     # Output: false
-    # print(solution.isPalindrome('race a car'))
+    print(solution.isPalindrome('race a car'))
 
     # Input: s = " "
     # Output: true
-    # print(solution.isPalindrome(' '))
+    print(solution.isPalindrome(' '))
 
     print(solution.isPalindrome('0P'))
