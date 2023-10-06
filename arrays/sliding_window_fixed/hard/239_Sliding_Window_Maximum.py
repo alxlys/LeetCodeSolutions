@@ -1,19 +1,13 @@
-import heapq
+# https://leetcode.com/problems/sliding-window-maximum/
 import math
 from typing import List
 
-
+# TODO not solved
 class Solution:
     def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
         num_count = {}
         res = []
         local_max = -math.inf
-
-        def add_to_map(i):
-            if nums[i] in num_count:
-                num_count[nums[i]] = num_count[nums[i]] + 1
-            else:
-                num_count[nums[i]] = 1
 
         def remove_from_map(i):
             if nums[i] in num_count:
@@ -25,7 +19,7 @@ class Solution:
         l, r = 0, 0
 
         while r < len(nums):
-            add_to_map(r)
+            num_count[nums[r]] = num_count.get(nums[r], 0) + 1
             local_max = max(local_max, nums[r])
             if r == k - 1:
                 res.append(local_max)
